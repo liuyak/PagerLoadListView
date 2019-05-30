@@ -20,3 +20,16 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:27.1.1'
 }
+
+apply plugin: 'maven'
+uploadArchives {
+    repositories.mavenDeployer {
+        def mavenDirPath = file('..\\PagerLoadListView\\libraries\\library_pagerlistview') // 本地存放地址
+        repository(url: "file://${mavenDirPath.absolutePath}")
+        pom.project {
+            groupId "com.liuyk.pagerlist" //包名
+            artifactId "pagerlistview" //module的名字
+            version "1.0.0" //版本号
+        }
+    }
+}
