@@ -13,7 +13,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements BasePageListView.OnPageListener {
     private PagerListView mListView;
     private DataAdapter mAdapter;
-    private int mPagerNo = 10;
+    private int mPagerNo = 5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,16 +24,19 @@ public class MainActivity extends AppCompatActivity implements BasePageListView.
     }
 
     private void initView() {
-        mListView = (PagerListView) findViewById(R.id.lit_view);
+        mListView = findViewById(R.id.lit_view);
+        mListView.setEmptyText("Empty Data");
+        mListView.setLoadingText("Loading Data");
+        mListView.setErrorText("Error Data");
         mAdapter = new DataAdapter(this);
         mAdapter.setItems(getData());
         mListView.setAdapter(mAdapter);
         mListView.setOnPageListener(this);
     }
 
-    private List<Data> getData(){
+    private List<Data> getData() {
         List<Data> items = new ArrayList<>();
-        for(int i=0; i<10; i++){
+        for (int i = 0; i < 10; i++) {
             Data data = new Data();
             data.setTitle("标题" + i);
             items.add(data);
@@ -43,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements BasePageListView.
 
     @Override
     public void onLoadMoreItems(int pageNo) {
-        if(mPagerNo > pageNo){
+        if (mPagerNo > pageNo) {
             mListView.setState(BasePageListView.LoadState.STATE_LOADING);
             new Handler().postDelayed(new Runnable() {
                 @Override
@@ -53,8 +56,7 @@ public class MainActivity extends AppCompatActivity implements BasePageListView.
                     mAdapter.notifyDataSetChanged();
                 }
             }, 1000);
-        }
-        else{
+        } else {
             mListView.setState(BasePageListView.LoadState.STATE_FINISH);
         }
     }
