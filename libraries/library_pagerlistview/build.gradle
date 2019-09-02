@@ -29,7 +29,7 @@ uploadArchives {
         pom.project {
             groupId "com.liuyk.pagerlist" //包名
             artifactId "pagerlistview" //module的名字
-            version "1.0.0" //版本号
+            version "1.0.1" //版本号
         }
     }
 }
