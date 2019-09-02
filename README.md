@@ -1,7 +1,7 @@
 # 用法
 1. 在APP目录下build.gradle下添加
 
-implementation 'com.liuyk.pagerlist:pagerlistview:1.0.0'
+implementation 'com.liuyk.pagerlist:pagerlistview:1.0.1'
 
 2. 在工程根目录build.gradle目录下添加
 
